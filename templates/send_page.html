@@ -18,9 +18,9 @@
         enctype="multipart/form-data"
       >
       
-        <select name="selected_user">
+        <select class="ip-select" name="selected_user">
             {% for user in active_users %}
-            <option value="{{ user.userIp }}">{{ user.userName }}</option>
+            <option class="ip-option" value="{{ user.userIp }}">{{ user.userName }}</option>
             {% endfor %}
         </select>
 

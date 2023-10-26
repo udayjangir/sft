@@ -9,17 +9,14 @@
     />
   </head>
   <body>
-    <main>
+    <main class="success-main-container">
       <h1 class="page-title">Success!</h1>
+      <button onclick="redirectToHome()">Go to home</button>
     </main>
   </body>
   <script>
-    const redirectToReceive = () => {
-      window.location.href = "/receive";
-    };
-
-    const redirectToSend = () => {
-      window.location.href = "/send_files";
-    };
+    const redirectToHome = () => {
+      window.location.href = "/"
+    }
   </script>
 </html>

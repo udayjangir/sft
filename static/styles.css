@@ -38,7 +38,11 @@ main {
   align-items: center;
   text-wrap: wrap;
   flex-grow: 0.5;
-  background: linear-gradient(to right, var(--primary) 95%, var(--background-color));
+  background: linear-gradient(
+    to right,
+    var(--primary) 95%,
+    var(--background-color)
+  );
 }
 
 .main-title p {
@@ -70,14 +74,16 @@ form {
   background-color: var(--card-background-color);
   /* border: 1px solid gray; */
   border-radius: 5px;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 input[type="file"] {
   margin-top: 10px;
-  padding: 0.5em;
+  padding: 0.5em 0em;
 }
 
-input[type="submit"], button {
+input[type="submit"],
+button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -90,7 +96,8 @@ input[type="submit"], button {
   transition: 0.5s;
 }
 
-input[type="submit"]:hover, button:hover {
+input[type="submit"]:hover,
+button:hover {
   background-color: var(--primary);
 }
 
@@ -100,6 +107,25 @@ input[type="text"] {
   border-radius: 1em;
   border: 1px solid gray;
   flex-grow: 1;
+}
+
+select {
+  padding: 10px; /* Add padding for better appearance */
+  font-size: 16px; /* Set the font size */
+  border: 2px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Style the options within the select element */
+select option {
+  background-color: #f2f2f2; /* Background color of options */
+  padding: 5px; /* Add padding to options */
+  border: 1px solid #ddd; /* Add a border to options */
+}
+
+/* Style the hover effect for options */
+select option:hover {
+  background-color: #e0e0e0;
 }
 
 .send-form {
@@ -139,4 +165,10 @@ input[type="text"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.success-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
