@@ -76,7 +76,8 @@ input[type="file"] {
   margin-top: 10px;
   padding: 0.5em;
 }
-input[type="submit"] {
+
+input[type="submit"], button {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -86,6 +87,11 @@ input[type="submit"] {
   min-width: 100px;
   width: fit-content;
   align-self: center;
+  transition: 0.5s;
+}
+
+input[type="submit"]:hover, button:hover {
+  background-color: var(--primary);
 }
 
 input[type="text"] {
@@ -118,18 +124,6 @@ input[type="text"] {
   width: fit-content;
   border-radius: 1em;
   justify-content: center;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 1em 0.8em;
-  border-radius: 1em;
-  cursor: pointer;
-  min-width: 100px;
-  width: fit-content;
-  align-self: center;
 }
 
 #receiver-info-container {
