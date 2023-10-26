@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SFT: Secure File Transfer</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <main class="home-container">
+      <div class="main-title">
+        <img id="main-logo" src="{{ url_for('static', filename='images/sft_logo.png') }}" alt="SFT Logo">
+        <p>Secure File</p>
+        <p>Transfer</p>
+      </div>
+      <div class="main-container">
+        <h1 class="page-title">Welcome !!</h1>
+        <div class="action-btn-container">
+          <button
+            type="submit"
+            onclick="redirectToSendPage()"
+          >
+            Send
+          </button>
+          <button
+            type="submit"
+            onclick="redirectToReceivePage()"
+          >
+            Receive
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    const redirectToReceivePage = () => {
+      window.location.href = "/receive_page";
+    };
+
+    const redirectToSendPage = () => {
+      window.location.href = "/send_page";
+    };
+  </script>
+</html>

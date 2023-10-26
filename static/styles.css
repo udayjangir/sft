@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+:root {
+  --background-color: rgba(255, 236, 222, 1);
+  --card-background-color: white;
+  --primary: rgba(19, 100, 171, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  min-height: 100vh;
+}
+
+main {
+  height: 100vh;
+}
+
+.home-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#main-logo {
+  width: 15em;
+  aspect-ratio: 1/1;
+}
+
+.main-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-wrap: wrap;
+  flex-grow: 0.5;
+  background: linear-gradient(to right, var(--primary) 95%, var(--background-color));
+}
+
+.main-title p {
+  font-size: 4em;
+  font-weight: bold;
+  color: var(--background-color);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.page-title {
+  color: var(--primary);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1em;
+  font-weight: bold;
+}
+
+form {
+  width: 300px;
+  min-width: 30vw;
+  margin: 1em auto;
+  padding: 1em;
+  background-color: var(--card-background-color);
+  /* border: 1px solid gray; */
+  border-radius: 5px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+input[type="file"] {
+  margin-top: 10px;
+  padding: 0.5em;
+}
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 1em 0.8em;
+  border-radius: 1em;
+  cursor: pointer;
+  min-width: 100px;
+  width: fit-content;
+  align-self: center;
+}
+
+input[type="text"] {
+  margin: 0.5em 0;
+  padding: 0.8em;
+  border-radius: 1em;
+  border: 1px solid gray;
+  flex-grow: 1;
+}
+
+.send-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.receive-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.action-btn-container {
+  padding: 1em;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  min-width: 30vw;
+  background-color: var(--card-background-color);
+  width: fit-content;
+  border-radius: 1em;
+  justify-content: center;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 1em 0.8em;
+  border-radius: 1em;
+  cursor: pointer;
+  min-width: 100px;
+  width: fit-content;
+  align-self: center;
+}
+
+#receiver-info-container {
+  height: 50vh;
+  width: 50vw;
+  background-color: var(--card-background-color);
+  border: 1px solid gray;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.receiver-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

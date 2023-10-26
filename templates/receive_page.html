@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Upload</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="main-container">
+        <h1 class="page-title">Receive files</h1>
+        <form
+          class="receive-form"
+          action="/receive_page?state=online"
+          method="POST"
+          id="upload-form"
+        >
+          <input
+            type="text"
+            name="userName"
+            placeholder="Enter your name"
+            id="user-name-input"
+          />
+          <input
+            type="submit"
+            id="submit-button"
+          />
+        </form>
+
+        <div id="receiver-info-container">
+          <div class="receiver-info-header">
+            <p id="user-name-display"></p>
+            <hr />
+            <hr />
+            <button
+              id="action-button"
+              onclick="makeOffline()"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    // JavaScript to handle form submission and show/hide elements
+    const form = document.getElementById("upload-form");
+    const userNameInput = document.getElementById("user-name-input");
+    const userNameDisplay = document.getElementById("user-name-display");
+    const userInfoDiv = document.getElementById("receiver-info-container");
+
+    console.log("{{isOnline}}");
+    console.log("{{value.userIp}} is the IP");
+    if ("{{isOnline}}" == "True") {
+      const userName = "{{value.userName}}";
+      userNameDisplay.textContent = `Receiving as ${userName} ...`;
+      form.style.display = "none";
+      userInfoDiv.style.display = "block";
+    } else if ("{{isOnline}}" == "False") {
+      userInfoDiv.style.display = "none";
+    }
+
+    const makeOffline = () => {
+      window.location.href = "/receive_page?state=offline";
+    };
+  </script>
+</html>
