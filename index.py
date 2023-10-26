@@ -4,13 +4,15 @@ import sender
 import receiver
 import socket
 import threading
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
+load_dotenv()
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
 app.config["RECEIVED_FOLDER"] = "received"
 app.config["STATIC_FOLDER"] = "static"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/ekthadb"
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 app.config["RECEIVER_PORT"] = 9999
 
@@ -21,6 +23,7 @@ def startReceive():
     receiver_socket = receiver.bindSocket()
     print("Started receiving ...")
     receiver.startReceiving(receiver_socket)
+    receiver.closeSocket(receiver_socket)
 
 thread = threading.Thread(target=startReceive)
 
@@ -31,7 +34,7 @@ def index():
 
 @app.route("/send", methods=["POST"])
 def sendFile():
-    RECEIVER_IP = request.form.get("receiver_ip")
+    RECEIVER_IP = request.form.get("selected_user")
 
     if "file" not in request.files:
         return "No file part"
@@ -58,12 +61,16 @@ def sendFile():
             file, file_name=file_name, file_size=file_size, sender_socket=sender_socket
         )
         sender.closeSocket(sender_socket)
-        return "File successfully sent"
+        return render_template("success.html")
 
 
 @app.route("/send_page", methods=["GET"])
 def goToSendPage():
-    return render_template("send_page.html")
+    active_users = db.active_users.find({})
+    active_users_list = []
+    for user in active_users:
+        active_users_list.append(user)
+    return render_template("send_page.html", active_users=active_users_list)
 
 
 @app.route("/receive_page", methods=["GET", "POST"])
@@ -74,7 +81,7 @@ def goToReceivePage():
         active_users = db.active_users
         user_ip = socket.gethostbyname(socket.gethostname())
         current_user = active_users.delete_many({"userIp": user_ip})
-        receiver.closeSocket()
+        thread.join()
         return render_template("receive_page.html", isOnline=False, value=None)
 
     elif request.method == "GET":
